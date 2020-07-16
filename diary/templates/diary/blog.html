@@ -1,0 +1,32 @@
+{% extends "diary/base.html" %}
+
+
+{% block content %}
+
+<div style="margin-top: 15px;" class="container">
+    {% for blog in blog_list %}
+
+        <h4>{{blog.title}}</h4>
+        <h6>{{blog.date}}</h6>
+        <p>{{blog.post}}</p>
+        
+        
+        <a href="{% url 'blog_update' blog.id %}" class="btn text-secondary px-0">
+            <i class="far fa-edit fa-lg">edit</i>
+        </a>
+        <form action="{% url 'blog_delete' blog.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn">
+                <i class="far fa-trash-alt fa-lg text-danger float-right"> Delete</i>
+            </button>
+        </form>
+        <hr>
+        <hr>
+        <br>
+        <br>
+{% endfor %}
+
+</div>
+
+
+{% endblock content %}

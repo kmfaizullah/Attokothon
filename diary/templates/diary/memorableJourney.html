@@ -1,0 +1,34 @@
+{% extends "diary/base.html" %}
+
+
+{% block content %}
+
+<div style="margin-top: 15px;" class="container">
+    {% for memory in memory_list %}
+
+        <h4>{{memory.title}}</h4>
+        <h6>{{memory.date}}</h6>
+        <p>{{memory.post}}</p>
+        <h5>Note:  </h5>
+        <p>{{memory.note}}</p>
+        
+        
+        <a href="{% url 'memory_update' memory.id %}" class="btn text-secondary px-0">
+            <i class="far fa-edit fa-lg">edit</i>
+        </a>
+        <form action="{% url 'memory_delete' memory.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn">
+                <i class="far fa-trash-alt fa-lg text-danger float-right"> Delete</i>
+            </button>
+        </form>
+        <hr>
+        <hr>
+        <br>
+        <br>
+{% endfor %}
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "diary/base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <table class="table table-borderless">
+        <thead class="border-bottom font-weight-bold">
+            <tr>
+                <td>Task</td>
+                <td>Place</td>
+                <td>Note</td>
+                <td>Date</td>
+    
+                <td>
+                    <a href="{% url 'todo_form' %}" class="btn btn-outline-success">
+                        <i class="fas fa-plus"></i> Add New
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todo_list %}
+                <tr>
+                    <td>{{todo.task}}</td>
+                    <td>{{todo.place}}</td>
+                    <td>{{todo.note}}</td>
+                    <td>{{todo.date}}</td>
+    
+                    <td>
+                        <a href="{% url 'todo_update' todo.id %}" class="btn text-secondary px-0">
+                            <i class="far fa-edit fa-lg">edit</i>
+                        </a>
+                        <form action="{% url 'todo_delete' todo.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">
+                                <i class="far fa-trash-alt fa-lg text-danger float-right">Delete</i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock content %}

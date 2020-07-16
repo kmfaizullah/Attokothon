@@ -1,0 +1,29 @@
+
+{% extends "diary/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container"> 
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+    
+        {{form.title|as_crispy_field}}
+        {{form.post|as_crispy_field}}
+        {{form.date|as_crispy_field}}
+        {{form.keypoints|as_crispy_field}}
+        <div class="row">
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                    Submit</button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'bestPlace' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> Back to Post
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}
