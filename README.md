@@ -1,7 +1,6 @@
 ### Attokothon: A Digital Personal Note Book
 This is a web application containing personal information including blog post, todo list, personal note etc.
 <b>Technology/Tools : </b> Django, Python, PostgreSQL, Bootstrap, HTML and CSS.
-<h6> <a href="https://youtu.be/VuQEjrhJ4sQ">Click here to see the Demo</h6>
 
 #### Dependencies
 1. It has been tested in windows 10 machine. 
